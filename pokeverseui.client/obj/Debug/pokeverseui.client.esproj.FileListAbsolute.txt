@@ -1,1 +1,2 @@
 C:\Users\jumpi\Documents\bootcamp_frontend\pokeverseUI\pokeverseUI.Client\obj\Debug\pokeverseui.client.esproj.CoreCompileInputs.cache
+C:\Users\eholloway\Documents\Bootcamp_frontend\pokeverseUI\pokeverseUI.Client\obj\Debug\pokeverseui.client.esproj.CoreCompileInputs.cache
