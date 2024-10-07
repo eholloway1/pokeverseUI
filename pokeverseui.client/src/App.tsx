@@ -10,20 +10,21 @@ function App() {
 
   useEffect(() => {
     const fetcher = async () => {
-      const response = await fetch(url);
+      const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
       const json = await response.json();
       setUnfilteredPoke(json);
     };
+
     fetcher();
   }, []);
 
   return (
+
     <div>
-      {unfilteredPoke?.map<PokeJson[]>((poke:PokeJson, index:number) => {
-        <PokeCards PokeName={poke.Name} PokeImg="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" />
-      });}
-      </div>
+      <h1>{unfilteredPoke.map((poke) => poke.Name)}</h1>
+      {unfilteredPoke.map(() => <PokeCards PokeName="bulba" PokeImg="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png" /> )}
+    </div>
   );
-};
+}
 
 export default App;

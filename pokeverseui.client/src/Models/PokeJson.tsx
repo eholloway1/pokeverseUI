@@ -1,4 +1,4 @@
-export type PokeJson = {
+export interface PokeJson {
   Name: string;
   Url: string;
 };
