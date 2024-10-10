@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 
 interface CardProps {
   PokeName: string;
-  PokeImg: string;
+  PokeImg: string | undefined;
 }
 
 function PokeCards({ PokeName, PokeImg }: CardProps) {
