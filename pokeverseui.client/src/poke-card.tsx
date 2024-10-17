@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
-import {PokeJson, pokeDetails} from "./Models/PokeJson.tsx";
+import {PokeJson, pokeDetails} from "./Models/poke-json.tsx";
 
 interface CardProps {
   PokeObj: PokeJson;

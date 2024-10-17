@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import PokeCards from './PokeCard';
-import {PokeJson, PokeResults} from './Models/PokeJson.tsx';
+import PokeCards from './poke-card.tsx';
+import {PokeJson, PokeResults} from './Models/poke-json.tsx';
 
 function App() {
   const url = "https://pokeapi.co/api/v2/pokemon?limit=151";
