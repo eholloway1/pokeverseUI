@@ -1,16 +1,23 @@
 import Card from 'react-bootstrap/Card';
+import { useState } from 'react';
+import {PokeJson, pokeDetails} from "./Models/PokeJson.tsx";
 
 interface CardProps {
-  PokeName: string;
-  PokeImg: string | undefined;
+  PokeObj: PokeJson;
 }
 
-function PokeCards({ PokeName, PokeImg }: CardProps) {
-  return (
-      <Card>
-        <Card.Img variant="top" src={PokeImg} />
+function PokeCards({ PokeObj }: CardProps) {
+    const [pokeDetails, setPokeDetails] = useState<pokeDetails>();
+    
+    fetch(PokeObj.url).then(response => response.json()).then(data => setPokeDetails(data));
+    
+    return (
+      <Card style={{width:'9rem'}}>
+        <Card.Img variant="top" src={pokeDetails?.sprites.front_default} />
         <Card.Body>
-          {PokeName}
+            <Card.Title>
+                {PokeObj.name}
+            </Card.Title>
         </Card.Body>
       </Card>
   );
