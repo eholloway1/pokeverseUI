@@ -9,7 +9,7 @@ const url = "https://pokeapi.co/api/v2/pokemon?limit=151";
 
 function App() {
 
-    const [unfilteredPoke, setUnfilteredPoke] = useState<PokeJson[] | undefined>([]);
+    const [unfilteredPoke, setUnfilteredPoke] = useState<PokeJson[] | undefined>(undefined);
     const [filteredPoke, setFilteredPoke] = useState<PokeJson[] | undefined>([]);
     const [jsonResult, setJsonResult] = useState<PokeResults>();
 
@@ -26,10 +26,12 @@ function App() {
             .then(data => setJsonResult(data))
             .finally(() => setUnfilteredPoke(jsonResult?.results));
         setFilteredPoke(unfilteredPoke);*/
-        fetcher();
-    }, []); console.log(jsonResult?.results);
+        if(!unfilteredPoke) {
+            fetcher();
+        }
+    }, [unfilteredPoke,filteredPoke]);
 
-    function handlePokeSearch(e) {
+    function handlePokeSearch(e: any) {
         const value = e.target.value;
         const regex = new RegExp(value, 'gi');
         const filtered = unfilteredPoke?.filter((poke) => {
@@ -45,7 +47,7 @@ function App() {
                 <TextField id='outlined-basic' label='Pokemon Search...' variant='outlined'
                     onChange={(e) => { handlePokeSearch(e); }} />
             </Box>
-            {filteredPoke?.map((poke) => <PokeCards PokeObj={poke} />)}
+            {filteredPoke == null ? unfilteredPoke?.map((poke) => <PokeCards PokeObj={poke} />) : filteredPoke?.map((poke) => <PokeCards PokeObj={poke} />)}
         </Container>
     );
 }
