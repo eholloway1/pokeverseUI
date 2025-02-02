@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
 import {PokeJson, PokeDetails} from "./Models/poke-json.tsx";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface CardProps {
   PokeObj: PokeJson;
@@ -11,16 +12,18 @@ function PokeCards({ PokeObj }: CardProps) {
 
     fetch(PokeObj.url).then(response => response.json()).then(data => setPokeDetails(data));
     
+    const move = pokeDetails?.moves.map(move => move.move.name);
+
     return (
-      <Card border="primary" key="primary" bg="secondary" className="mb-2" style={{width:'9rem'}}>
-        <Card.Img variant="top" src={pokeDetails?.sprites.front_default} />
+      <Card key={'Dark'} bg={'dark'} className="mb-2" text={'white'} >
+        <Card.Img variant="top" src={pokeDetails?.sprites.front_default} alt={PokeObj.name} style={{backgroundColor: "gray"}}/>
         <Card.Body>
             <Card.Title>
                 {PokeObj.name}
             </Card.Title>
-            <Card.Text>
-                {pokeDetails?.moves[0].move.name}
-            </Card.Text>
+            <>
+              {move?.slice(0,4).map(m => <Card.Text style={{padding: 0, border: 0, margin: 0}}>{m}</Card.Text>)}
+            </>
         </Card.Body>
       </Card>
   );
