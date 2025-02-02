@@ -37,14 +37,18 @@ function App() {
     }
 
     return (
-        <Container className="flexContainer">
-            <TitleBar />
-            <Box display='flex' p={3}>
-                <TextField id='outlined-basic' label='Pokemon Search...' variant='outlined'
-                    onChange={(e) => { handlePokeSearch(e); }} />
-            </Box>
-            {filteredPoke == null ? unfilteredPoke?.map((poke) => <PokeCards PokeObj={poke} />) : filteredPoke?.map((poke) => <PokeCards PokeObj={poke} />)}
-        </Container>
+        <>
+            <div className="title">
+                <TitleBar />
+            </div>
+                <Box display='flex' p={3} style={{padding: 0, border: 0, margin: 0, marginBottom: '.5rem', justifyContent: 'center'}}>
+                    <TextField id='outlined-basic' label='Pokemon Search...' variant='outlined'
+                        onChange={(e) => { handlePokeSearch(e); }} style={{ borderRadius: 4}}/>
+                </Box>
+            <Container className="flexContainer">
+                {filteredPoke == null ? unfilteredPoke?.map((poke) => <PokeCards PokeObj={poke} />) : filteredPoke?.map((poke) => <PokeCards PokeObj={poke} />)}
+            </Container>
+        </>
     );
 }
 
