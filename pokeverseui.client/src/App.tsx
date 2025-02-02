@@ -22,10 +22,6 @@ function App() {
     }
 
     useEffect(() => {
-        /*fetch(url).then(response => response.json())
-            .then(data => setJsonResult(data))
-            .finally(() => setUnfilteredPoke(jsonResult?.results));
-        setFilteredPoke(unfilteredPoke);*/
         if(!unfilteredPoke) {
             fetcher();
         }

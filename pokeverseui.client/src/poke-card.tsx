@@ -12,7 +12,7 @@ function PokeCards({ PokeObj }: CardProps) {
     fetch(PokeObj.url).then(response => response.json()).then(data => setPokeDetails(data));
     
     return (
-      <Card border="primary" key="primary" bg="secondary" className="mb-2" style={{width:'9rem'}}>
+      <Card border="primary">
         <Card.Img variant="top" src={pokeDetails?.sprites.front_default} />
         <Card.Body>
             <Card.Title>
@@ -26,4 +26,4 @@ function PokeCards({ PokeObj }: CardProps) {
   );
 }
 
-export default PokeCards;   
+export default PokeCards;
